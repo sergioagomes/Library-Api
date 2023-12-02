@@ -7,10 +7,9 @@ services:
       context: .
       dockerfile: .
     ports:
-      - "32774:80"
-      - "60529:443"   
+     - "8081:80"    
     depends_on:
-      - mysqldocker
+      - my-sql-docker
 
   my-sql-docker:
     image: mysql
