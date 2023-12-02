@@ -2,19 +2,21 @@ version: '3.4'
 
 services:
   library.api:
-        image: ${DOCKER_REGISTRY-}library
-        build:
-            context: .
-            dockerfile: .
-        ports:
-            - "8081:80"
+    image: ${DOCKER_REGISTRY-}library
+    build:
+      context: .
+      dockerfile: .
+    ports:
+      - "32774:80"
+      - "60529:443"   
+    depends_on:
+      - mysqldocker
 
-
-
-  db:
-        image: postgres
-        restart: always
-        environment:
-            POSTGRES_PASSWORD: 
-        ports:
-            - "8080:8080"
+  my-sql-docker:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - D:\Dados\volumes\mysql:/var/opt/mysql/data
+    ports:
+      - "3307:3306"

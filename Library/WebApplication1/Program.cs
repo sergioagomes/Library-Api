@@ -1,4 +1,5 @@
 using Library.Data;
+using Library.Service;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -6,10 +7,18 @@ using Microsoft.Extensions.Configuration;
 //Conection with Database
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
+
+var server = builder.Configuration["DbServer"] ?? "localhost";
+var port = builder.Configuration["DbPort"] ?? "3306";
+var user = builder.Configuration["DbUser"] ?? "root";
+var password = builder.Configuration["Password"] ?? "root";
+var database = builder.Configuration["Database"] ?? "LibraryDb";
 
 var connectionString = builder.Configuration.GetConnectionString("BooksConnection");
 
-builder.Services.AddDbContext<MysqlContext>(opts => opts.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<MysqlContext>(opts => 
+                        opts.UseLazyLoadingProxies().UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 //
 
@@ -33,6 +42,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//create migration on container
+//DatabaseManagementService.MigrationInitialisation(app);
 
 app.UseHttpsRedirection();
 
