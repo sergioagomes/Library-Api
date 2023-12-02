@@ -23,7 +23,7 @@ jobs:
         dotnet-version: 6.0.x
     
     - name: Install dependencies
-      run: dotnet restore ./Library/WebApplication1/Libray
+      run: dotnet restore ./Library/WebApplication1/Library
       
     - name: Build with dotnet
-      run: dotnet restore ./Library/WebApplication1/Libray
+      run: dotnet restore ./Library/WebApplication1/Library
