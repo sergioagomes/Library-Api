@@ -6,3 +6,14 @@ services:
     build:
       context: .
       dockerfile: WebApplication1/Dockerfile
+    ports:
+        - "8081:80"
+  
+  mysqldocker:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - D:\Dados\volumes\mysql:/var/opt/mysql/data
+    ports:
+      - "3307:3306"

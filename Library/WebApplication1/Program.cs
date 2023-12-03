@@ -44,7 +44,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //create migration on container
-//DatabaseManagementService.MigrationInitialisation(app);
+DatabaseManagementService.MigrationInitialisation(app);
 
 app.UseHttpsRedirection();
 
