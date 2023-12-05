@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: .
     ports:
-       - "8080:80"
+       #- "80:80"
        - "443:443"
     depends_on: 
         - mysqldocker
@@ -17,6 +17,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - D:\Dados\volumes\mysql:/var/opt/mysql/data
+      - /var/lib/mysql:/var/opt/mysql/data
     ports:
       - "3307:3306"
