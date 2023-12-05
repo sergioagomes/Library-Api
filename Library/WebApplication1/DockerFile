@@ -18,5 +18,6 @@ RUN dotnet publish "Library.csproj" -c Release -o /app/publish /p:UseAppHost=fal
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-EXPOSE 81
+EXPOSE 80
+EXPOSE 443
 ENTRYPOINT ["dotnet", "Library.dll"]

@@ -7,7 +7,9 @@ services:
       context: .
       dockerfile: WebApplication1/Dockerfile
     ports:
-        - "8081:80"
+        - "51930:80"
+    depends_on: 
+        - mysqldocker
   
   mysqldocker:
     image: mysql
