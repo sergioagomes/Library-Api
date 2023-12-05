@@ -1,13 +1,14 @@
-version: '3.4'
+version: '3.8'
 
 services:
   library:
     image: ${DOCKER_REGISTRY-}library
     build:
       context: .
-      dockerfile: WebApplication1/Dockerfile
+      dockerfile: .
     ports:
-        - "51930:80"
+       - "8080:80"
+       - "443:443"
     depends_on: 
         - mysqldocker
   
